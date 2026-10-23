@@ -6,10 +6,9 @@
   <title>Dashboard Reimbursement Pengobatan</title>
 
   <!-- Google Fonts & Icons -->
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
 
-  
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   
@@ -31,10 +30,6 @@
       color: #1f2937;
       overflow-x: hidden;
     }
-    .navbar-medical {
-      background: linear-gradient(135deg, var(--medical-dark), var(--medical-primary));
-      box-shadow: 0 4px 15px rgba(15, 118, 110, 0.2);
-    }
     .material-card {
       background: #ffffff;
       border-radius: 12px;
@@ -44,7 +39,6 @@
       margin-bottom: 20px;
     }
 
-    /* NAV MENU & BUTTON HEIGHT UNIFORMITY (40px HEIGHT) */
     .nav-pills .nav-link {
       height: 40px;
       border-radius: 8px;
@@ -79,7 +73,6 @@
       font-size: 20px !important;
     }
 
-    /* UNIFORM FILTER INPUTS & DROPDOWNS (38px HEIGHT) */
     .filter-control {
       height: 38px !important;
       font-size: 13px !important;
@@ -102,7 +95,6 @@
       justify-content: space-between !important;
     }
 
-    /* KUNCI CONTAINER TABEL MAXIMAL UNTUK LAYAR */
     .table-scroll-container {
       height: calc(100vh - 280px);
       min-height: 380px;
@@ -127,7 +119,6 @@
       white-space: nowrap;
     }
 
-    /* LEBAR FASKES */
     .col-faskes {
       max-width: 160px;
       white-space: nowrap;
@@ -135,7 +126,6 @@
       text-overflow: ellipsis;
     }
 
-    /* STATUS BADGES */
     .btn-status-pending {
       background-color: #fffbe2;
       color: #b45309;
@@ -163,7 +153,6 @@
       cursor: pointer;
     }
 
-    /* SPINNER OVERLAY */
     #loadingSpinner {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
@@ -197,8 +186,6 @@
     <div class="fw-bold mt-3 text-secondary">Loading ...</div>
   </div>
 
- 
-
   <div class="container-fluid py-3 px-4">
     <!-- Tabs Header Utama -->
     <ul class="nav nav-pills mb-3" id="mainTab" role="tablist">
@@ -228,22 +215,18 @@
           <!-- Baris Tombol Aksi Utama -->
           <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
             <div class="d-flex align-items-center gap-2">
-              <!-- HAMBURGER MENU / SPREADSHEET -->
               <a href="https://docs.google.com/spreadsheets/d/1M-c92Ax6gnvCQwLnuIEw0jYJkk9Su2szwXM52ScKGFY" target="_blank" class="btn btn-outline-secondary btn-action-main" title="Buka Spreadsheet di Tab Baru">
                 <span class="material-symbols-outlined">table_view</span>
               </a>
 
-              <!-- REFRESH DATA -->
               <button class="btn btn-success btn-action-main" style="background-color: var(--medical-primary); border:none;" onclick="loadData()">
                 <span class="material-symbols-outlined">refresh</span> Refresh
               </button>
 
-              <!-- TAMBAH DATA BARU -->
               <button class="btn btn-outline-success btn-action-main" style="color: var(--medical-primary); border-color: var(--medical-primary);" onclick="openAddModal()">
                 <span class="material-symbols-outlined">add</span> Tambah
               </button>
 
-              <!-- PROSES MASAL & CETAK PDF -->
               <button class="btn btn-success btn-action-main fw-bold" onclick="prosesMasal()">
                 <span class="material-symbols-outlined">print</span> Proses
               </button>
@@ -251,14 +234,12 @@
             <span class="text-muted small"></span>
           </div>
 
-          <!-- BARIS FILTER DAN SEARCH DENGAN TINGGI SERAGAM (IMAGE SIMILAR DESIGN) -->
+          <!-- BARIS FILTER DAN SEARCH -->
           <div class="row g-2 mb-3 align-items-center bg-light p-2 rounded-3 border">
-            <!-- Search Nama / Pasien -->
             <div class="col-md-3">
               <input type="text" id="filterSearch" class="form-control filter-control" placeholder="Cari Karyawan ..." oninput="applyFilters()">
             </div>
 
-            <!-- Dropdown Bulan -->
             <div class="col-md-2">
               <select id="filterMonth" class="form-select filter-control" onchange="applyFilters()">
                 <option value="">-- Semua Bulan --</option>
@@ -277,12 +258,10 @@
               </select>
             </div>
 
-            <!-- Dropdown Tahun -->
             <div class="col-md-2">
               <select id="filterYear" class="form-select filter-control" onchange="applyFilters()"></select>
             </div>
 
-            <!-- Dropdown Checklist Faskes -->
             <div class="col-md-2">
               <div class="dropdown">
                 <button class="btn filter-dropdown-btn w-100 dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside">
@@ -292,7 +271,6 @@
               </div>
             </div>
 
-            <!-- Dropdown Checklist Tanggal Proses -->
             <div class="col-md-2">
               <div class="dropdown">
                 <button class="btn filter-dropdown-btn w-100 dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside">
@@ -302,13 +280,12 @@
               </div>
             </div>
 
-            <!-- Reset Filter -->
             <div class="col-md-1 text-end">
               <button class="btn btn-link text-decoration-none text-danger fw-semibold small p-0 me-2" onclick="resetFilters()">Reset</button>
             </div>
           </div>
 
-          <!-- CONTAINER TABEL (MAX TINGGI LAYAR) -->
+          <!-- CONTAINER TABEL -->
           <div class="table-scroll-container">
             <table class="table table-hover align-middle" id="mainDataTable">
               <thead>
@@ -475,13 +452,13 @@
               <input type="text" id="editNoMemo" class="form-control" placeholder="Otomatis dikosongkan">
             </div>
 
-       <div class="col-md-6">
-  <label class="form-label fw-bold">Tanggal Proses</label>
-  <input type="date" id="editTglProses" class="form-control">
-  <small class="text-danger text-end d-block fst-italic" style="font-size: 0.75rem;">
-    *Ajukan Reimbursement Ulang (Status Pending).
-  </small>
-</div>
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Tanggal Proses</label>
+              <input type="date" id="editTglProses" class="form-control">
+              <small class="text-danger text-end d-block fst-italic" style="font-size: 0.75rem;">
+                *Ajukan Reimbursement Ulang (Status Pending).
+              </small>
+            </div>
           </form>
         </div>
         <div class="modal-footer justify-content-between">
@@ -611,8 +588,8 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
- <script>
-    const GAS_URL = 'https://script.google.com/macros/s/AKfycbzUVWMLBVY9_VfhtvcAXphUwgMuc1009fkhZ_ULk7yREUXN9UTL9NVa2h25tSTYvOpG3w/exec';
+  <script>
+    const GAS_URL = 'https://script.google.com/macros/s/AKfycbzI1whF-SysTk7b8BTS0tHS3xOyf9ySXgaiMJ6cYeRbkUOhlsEJPwRCGmlcAHwzWslYvA/exec';
     let globalData = [];
     let filteredData = [];
     let editModalInstance, addModalInstance, alertModalInstance;
@@ -677,7 +654,6 @@
       fetch(GAS_URL)
         .then(res => res.json())
         .then(data => {
-          // SORTING: DATA PENDING (TANGGAL KOSONG) TAMPIL PADA BARIS ATAS
           data.sort((a, b) => {
             const aIsPending = !isValidDateString(a.tglProses);
             const bIsPending = !isValidDateString(b.tglProses);
@@ -1004,195 +980,194 @@
       document.querySelectorAll('.row-checkbox:not(:disabled)').forEach(cb => cb.checked = master.checked);
     }
 
- function prosesMasal() {
-  const checkedRows = Array.from(document.querySelectorAll('.row-checkbox:checked')).map(cb => parseInt(cb.value));
-  if (checkedRows.length === 0) {
-    return showAlert('Pilih minimal satu data Pending yang dicentang!', 'Peringatan', 'warning');
-  }
+    function prosesMasal() {
+      const checkedRows = Array.from(document.querySelectorAll('.row-checkbox:checked')).map(cb => parseInt(cb.value));
+      if (checkedRows.length === 0) {
+        return showAlert('Pilih minimal satu data Pending yang dicentang!', 'Peringatan', 'warning');
+      }
 
-  showSpinner();
-  fetch(GAS_URL, {
-    method: 'POST',
-    body: JSON.stringify({ action: 'bulkProcess', rowIndices: checkedRows })
-  })
-  .then(res => res.json())
-  .then(res => {
-    // 1. Download / Buka PDF
-    generateAndPreviewBatchPDF(res.memoNo, res.tglProses, res.items);
-    
-    // 2. Tampilkan notifikasi sukses
-    showAlert('Data berhasil diproses dan diklaim!', 'Sukses', 'check_circle');
-    
-    // 3. Refresh data dari backend
-    loadData();
-  })
-  .catch(err => {
-    console.error(err);
-    showAlert('Gagal memproses masal.', 'Error', 'error');
-  })
-  .finally(() => hideSpinner());
-}
+      showSpinner();
+      fetch(GAS_URL, {
+        method: 'POST',
+        body: JSON.stringify({ action: 'bulkProcess', rowIndices: checkedRows })
+      })
+      .then(res => res.json())
+      .then(res => {
+        generateAndPreviewBatchPDF(res.memoNo, res.tglProses, res.items);
+        showAlert('Data berhasil diproses dan diklaim!', 'Sukses', 'check_circle');
+        loadData();
+      })
+      .catch(err => {
+        console.error(err);
+        showAlert('Gagal memproses masal.', 'Error', 'error');
+      })
+      .finally(() => hideSpinner());
+    }
 
-function generateAndPreviewBatchPDF(memoNo, tglProses, items) {
-  if (!items || items.length === 0) {
-    showAlert('Tidak ada data untuk dicetak.', 'Peringatan', 'warning');
-    return;
-  }
+    function generateAndPreviewBatchPDF(memoNo, tglProses, items) {
+      if (!items || items.length === 0) {
+        showAlert('Tidak ada data untuk dicetak.', 'Peringatan', 'warning');
+        return;
+      }
 
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF({
-    orientation: 'landscape',
-    unit: 'mm',
-    format: 'a4'
-  });
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({
+        orientation: 'landscape',
+        unit: 'mm',
+        format: 'a4'
+      });
 
-  items.sort((a, b) => (a.namaKaryawan || '').localeCompare(b.namaKaryawan || ''));
+      items.sort((a, b) => (a.namaKaryawan || '').localeCompare(b.namaKaryawan || ''));
 
-  // Header Judul
-  doc.setFontSize(12);
-  doc.setFont("helvetica", "bold");
-  doc.setTextColor(26, 115, 232);
-  doc.text("REIMBURSEMENT PENGOBATAN KARYAWAN", 148, 12, { align: "center" });
+      // Header Judul
+      doc.setFontSize(12);
+      doc.setFont("helvetica", "bold");
+      doc.setTextColor(26, 115, 232);
+      doc.text("REIMBURSEMENT PENGOBATAN KARYAWAN", 148, 12, { align: "center" });
 
-  doc.setFontSize(9);
-  doc.setFont("helvetica", "normal");
-  doc.setTextColor(95, 99, 104);
-  doc.text(memoNo || 'MEMO/REIMBURSE/000', 148, 17, { align: "center" });
+      doc.setFontSize(9);
+      doc.setFont("helvetica", "normal");
+      doc.setTextColor(95, 99, 104);
+      doc.text(memoNo || 'MEMO/REIMBURSE/000', 148, 17, { align: "center" });
 
-  const employeeTotals = {};
-  items.forEach(item => {
-    const nama = item.namaKaryawan;
-    const val = Number(item.nilaiReimburse || 0);
-    employeeTotals[nama] = (employeeTotals[nama] || 0) + val;
-  });
+      const employeeTotals = {};
+      items.forEach(item => {
+        const nama = item.namaKaryawan;
+        const val = Number(item.nilaiReimburse || 0);
+        employeeTotals[nama] = (employeeTotals[nama] || 0) + val;
+      });
 
-  const tableBodyData = items.map((item, idx) => {
-    const totalPenggantianKaryawan = employeeTotals[item.namaKaryawan];
-    return [
-      idx + 1,
-      item.namaKaryawan || '-',
-      item.divisi || '-',
-      item.namaFaskes || '-',
-      formatDateDisplay(item.tglKuitansi),
-      item.keterangan || '-',
-      item.nominalKuitansi ? Number(item.nominalKuitansi).toLocaleString('id-ID') : '0',
-      Math.round((item.persentase || 0) * (item.persentase > 1 ? 1 : 100)) + '%',
-      item.nilaiReimburse ? Number(item.nilaiReimburse).toLocaleString('id-ID') : '0',
-      totalPenggantianKaryawan ? totalPenggantianKaryawan.toLocaleString('id-ID') : '0',
-      ''
-    ];
-  });
+      // Ditambahkan kolom "Hub." (item.hubungan) di tabel PDF
+      const tableBodyData = items.map((item, idx) => {
+        const totalPenggantianKaryawan = employeeTotals[item.namaKaryawan];
+        return [
+          idx + 1,
+          item.namaKaryawan || '-',
+          item.divisi || '-',
+          item.namaFaskes || '-',
+          formatDateDisplay(item.tglKuitansi),
+          item.keterangan || '-',
+          item.hubungan || '-',
+          item.nominalKuitansi ? Number(item.nominalKuitansi).toLocaleString('id-ID') : '0',
+          Math.round((item.persentase || 0) * (item.persentase > 1 ? 1 : 100)) + '%',
+          item.nilaiReimburse ? Number(item.nilaiReimburse).toLocaleString('id-ID') : '0',
+          totalPenggantianKaryawan ? totalPenggantianKaryawan.toLocaleString('id-ID') : '0',
+          ''
+        ];
+      });
 
-  const totalReimburse = items.reduce((a, b) => a + Number(b.nilaiReimburse || 0), 0);
+      const totalReimburse = items.reduce((a, b) => a + Number(b.nilaiReimburse || 0), 0);
 
-  doc.autoTable({
-    startY: 22,
-    head: [[
-      'No', 'Nama', 'Dept.', 'Faskes', 'Kuitansi', 
-      'Keterangan', 'Jumlah', 'Persentase', 'Reimburse', 
-      'Total', 'Paraf'
-    ]],
-    body: tableBodyData,
-    theme: 'grid',
-    styles: { 
-      fontSize: 7.5,
-      cellPadding: 1.8, 
-      textColor: [32, 33, 36],
-      lineColor: [0, 0, 0], 
-      lineWidth: 0.15,
-      valign: 'middle',
-      overflow: 'ellipsize',
-      noWrap: true
-    },
-    headStyles: { 
-      fillColor: [241, 243, 244],
-      textColor: [60, 64, 67], 
-      fontStyle: 'bold', 
-      halign: 'center',
-      valign: 'middle',
-      fontSize: 8,
-      lineWidth: 0.2,
-      lineColor: [189, 195, 199],
-      noWrap: false
-    },
-    columnStyles: {
-      0: { halign: 'center', cellWidth: 8 },
-      1: { cellWidth: 38, cellPadding: { left: 1, right: 1 } },
-      2: { cellWidth: 14, halign: 'center' },
-      3: { cellWidth: 46 },
-      4: { halign: 'center', cellWidth: 20 },
-      5: { cellWidth: 30 },
-      6: { halign: 'right', cellWidth: 22 },
-      7: { halign: 'center', cellWidth: 20 },
-      8: { halign: 'right', cellWidth: 22 },
-      9: { halign: 'right', cellWidth: 25 },
-      10: { cellWidth: 22 }
-    },
-    didParseCell: function(data) {
-      if (data.section === 'body') {
-        const colIdx = data.column.index;
-        const rowIdx = data.row.index;
+      doc.autoTable({
+        startY: 22,
+        head: [[
+          'No', 'Nama', 'Dept.', 'Faskes', 'Kuitansi', 
+          'Keterangan', 'Hub.', 'Jumlah', 'Persentase', 'Reimburse', 
+          'Total', 'Paraf'
+        ]],
+        body: tableBodyData,
+        theme: 'grid',
+        styles: { 
+          fontSize: 7.5,
+          cellPadding: 1.8, 
+          textColor: [32, 33, 36],
+          lineColor: [0, 0, 0], 
+          lineWidth: 0.15,
+          valign: 'middle',
+          overflow: 'ellipsize',
+          noWrap: true
+        },
+        headStyles: { 
+          fillColor: [241, 243, 244],
+          textColor: [60, 64, 67], 
+          fontStyle: 'bold', 
+          halign: 'center',
+          valign: 'middle',
+          fontSize: 8,
+          lineWidth: 0.2,
+          lineColor: [189, 195, 199],
+          noWrap: false
+        },
+        columnStyles: {
+          0: { halign: 'center', cellWidth: 8 },
+          1: { cellWidth: 35, cellPadding: { left: 1, right: 1 } },
+          2: { cellWidth: 12, halign: 'center' },
+          3: { cellWidth: 42 },
+          4: { halign: 'center', cellWidth: 18 },
+          5: { cellWidth: 28 },
+          6: { halign: 'center', cellWidth: 15 },
+          7: { halign: 'right', cellWidth: 20 },
+          8: { halign: 'center', cellWidth: 18 },
+          9: { halign: 'right', cellWidth: 20 },
+          10: { halign: 'right', cellWidth: 23 },
+          11: { cellWidth: 20 }
+        },
+        didParseCell: function(data) {
+          if (data.section === 'body') {
+            const colIdx = data.column.index;
+            const rowIdx = data.row.index;
 
-        if (colIdx === 9 || colIdx === 10) {
-          const currentName = items[rowIdx].namaKaryawan;
-          if (rowIdx === 0 || items[rowIdx - 1].namaKaryawan !== currentName) {
-            let count = 0;
-            for (let i = rowIdx; i < items.length; i++) {
-              if (items[i].namaKaryawan === currentName) {
-                count++;
-              } else {
-                break;
+            // Merge sel pada kolom Total (10) dan Paraf (11) jika karyawan sama
+            if (colIdx === 10 || colIdx === 11) {
+              const currentName = items[rowIdx].namaKaryawan;
+              if (rowIdx === 0 || items[rowIdx - 1].namaKaryawan !== currentName) {
+                let count = 0;
+                for (let i = rowIdx; i < items.length; i++) {
+                  if (items[i].namaKaryawan === currentName) {
+                    count++;
+                  } else {
+                    break;
+                  }
+                }
+                if (count > 1) {
+                  data.cell.rowSpan = count;
+                }
               }
             }
-            if (count > 1) {
-              data.cell.rowSpan = count;
-            }
+          }
+        },
+        foot: [[
+          { content: '', colSpan: 9 },
+          { content: 'Total', styles: { halign: 'right', fontStyle: 'bold', textColor: [26, 115, 232] } },
+          { content: totalReimburse.toLocaleString('id-ID'), styles: { halign: 'right', fontStyle: 'bold', textColor: [26, 115, 232] } },
+          { content: '' }
+        ]],
+        willDrawCell: function(data) {
+          if (data.section === 'foot') {
+            data.cell.styles.lineWidth = 0;
+            doc.setFillColor(232, 240, 254);
+            doc.rect(data.cell.x, data.cell.y, data.cell.width, data.cell.height, 'F');
           }
         }
-      }
-    },
-    foot: [[
-      { content: '', colSpan: 8 },
-      { content: 'Total', styles: { halign: 'right', fontStyle: 'bold', textColor: [26, 115, 232] } },
-      { content: totalReimburse.toLocaleString('id-ID'), styles: { halign: 'right', fontStyle: 'bold', textColor: [26, 115, 232] } },
-      { content: '' }
-    ]],
-    willDrawCell: function(data) {
-      if (data.section === 'foot') {
-        data.cell.styles.lineWidth = 0;
-        doc.setFillColor(232, 240, 254);
-        doc.rect(data.cell.x, data.cell.y, data.cell.width, data.cell.height, 'F');
-      }
+      });
+
+      const finalY = doc.lastAutoTable.finalY + 8;
+      const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+      const dateObj = new Date();
+      const dateStr = `Jakarta, ${String(dateObj.getDate()).padStart(2, '0')} ${monthNames[dateObj.getMonth()]} ${dateObj.getFullYear()}`;
+
+      doc.setTextColor(32, 33, 36);
+      doc.setFontSize(8.5);
+      doc.setFont("helvetica", "normal");
+      doc.text(dateStr, 14, finalY);
+
+      doc.text("Dibuat oleh,", 14, finalY + 5);
+      doc.text("Mengetahui,", 75, finalY + 5);
+      doc.text("Menyetujui,", 145, finalY + 5);
+
+      doc.text("(  Yunanto  )", 14, finalY + 24);
+      doc.text("(  R.M Yugiantoro M.A  )", 75, finalY + 24);
+      doc.text("(  Indra J. Siregar  )", 145, finalY + 24);
+
+      doc.setFontSize(7.5);
+      doc.setFont("helvetica", "italic");
+      doc.setTextColor(95, 99, 104);
+      doc.text("Note : Maks 2 bulan tanggal Kuitansi", 14, finalY + 29);
+
+      const cleanMemoName = (memoNo || 'MEMO_REIMBURSE').replace(/[/\\?%*:|"<>]/g, '_');
+      doc.save(`${cleanMemoName}.pdf`);
     }
-  });
 
-  const finalY = doc.lastAutoTable.finalY + 8;
-  const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
-  const dateObj = new Date();
-  const dateStr = `Jakarta, ${String(dateObj.getDate()).padStart(2, '0')} ${monthNames[dateObj.getMonth()]} ${dateObj.getFullYear()}`;
-
-  doc.setTextColor(32, 33, 36);
-  doc.setFontSize(8.5);
-  doc.setFont("helvetica", "normal");
-  doc.text(dateStr, 14, finalY);
-
-  doc.text("Dibuat oleh,", 14, finalY + 5);
-  doc.text("Mengetahui,", 75, finalY + 5);
-  doc.text("Menyetujui,", 145, finalY + 5);
-
-  doc.text("(  Yunanto  )", 14, finalY + 24);
-  doc.text("(  R.M Yugiantoro M.A  )", 75, finalY + 24);
-  doc.text("(  Indra J. Siregar  )", 145, finalY + 24);
-
-  doc.setFontSize(7.5);
-  doc.setFont("helvetica", "italic");
-  doc.setTextColor(95, 99, 104);
-  doc.text("Note : Maks 2 bulan tanggal Kuitansi", 14, finalY + 29);
-
-  // LANGKAH PENTING: Otomatis Download File PDF
-  const cleanMemoName = (memoNo || 'MEMO_REIMBURSE').replace(/[/\\?%*:|"<>]/g, '_');
-  doc.save(`${cleanMemoName}.pdf`);
-}
     function populateYearDropdowns(data) {
       const years = [...new Set(data.map(d => getYearFromDateStr(d.tglProses || d.tglKuitansi)).filter(Boolean))].sort((a,b) => b-a);
       const currentYear = new Date().getFullYear();
@@ -1289,53 +1264,49 @@ function generateAndPreviewBatchPDF(memoNo, tglProses, items) {
     }
 
     function renderSummaryTable() {
-  const year = parseInt(document.getElementById('filterYearSummary').value, 10);
-  const employees = [...new Set(globalData.map(d => d.namaKaryawan).filter(Boolean))];
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agt', 'Sep', 'Okt', 'Nov', 'Des'];
+      const year = parseInt(document.getElementById('filterYearSummary').value, 10);
+      const employees = [...new Set(globalData.map(d => d.namaKaryawan).filter(Boolean))];
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agt', 'Sep', 'Okt', 'Nov', 'Des'];
 
-  // 1. Hitung total per karyawan & kumpulkan data bulanan
-  const summaryData = employees.map(emp => {
-    let rowTotal = 0;
-    const monthlyValues = [];
+      const summaryData = employees.map(emp => {
+        let rowTotal = 0;
+        const monthlyValues = [];
 
-    for (let m = 0; m < 12; m++) {
-      const sum = globalData
-        .filter(d => d.namaKaryawan === emp && (d.tglProses || d.tglKuitansi) && getYearFromDateStr(d.tglProses || d.tglKuitansi) === year && getMonthIndexFromDateStr(d.tglProses || d.tglKuitansi) === m)
-        .reduce((acc, curr) => acc + Number(curr.nilaiReimburse || 0), 0);
+        for (let m = 0; m < 12; m++) {
+          const sum = globalData
+            .filter(d => d.namaKaryawan === emp && (d.tglProses || d.tglKuitansi) && getYearFromDateStr(d.tglProses || d.tglKuitansi) === year && getMonthIndexFromDateStr(d.tglProses || d.tglKuitansi) === m)
+            .reduce((acc, curr) => acc + Number(curr.nilaiReimburse || 0), 0);
 
-      rowTotal += sum;
-      monthlyValues.push(sum);
+          rowTotal += sum;
+          monthlyValues.push(sum);
+        }
+
+        return {
+          nama: emp,
+          monthly: monthlyValues,
+          total: rowTotal
+        };
+      });
+
+      summaryData.sort((a, b) => b.total - a.total);
+
+      let headerHTML = `<tr><th>Nama Karyawan</th>${months.map(m => `<th>${m}</th>`).join('')}<th>Total</th></tr>`;
+      document.getElementById('summaryHeader').innerHTML = headerHTML;
+
+      let bodyHTML = '';
+      summaryData.forEach(item => {
+        if (item.total > 0) {
+          const monthCols = item.monthly.map(sum => `<td>${sum ? 'Rp ' + sum.toLocaleString('id-ID') : '-'}</td>`).join('');
+          bodyHTML += `<tr><td class="fw-bold text-start">${item.nama}</td>${monthCols}<td class="fw-bold bg-light text-success">Rp ${item.total.toLocaleString('id-ID')}</td></tr>`;
+        }
+      });
+
+      if (!bodyHTML) {
+        bodyHTML = `<tr><td colspan="14" class="text-center text-muted py-3">Tidak ada data reimbursement pada tahun ${year}.</td></tr>`;
+      }
+
+      document.getElementById('summaryBody').innerHTML = bodyHTML;
     }
-
-    return {
-      nama: emp,
-      monthly: monthlyValues,
-      total: rowTotal
-    };
-  });
-
-  // 2. Sortir data berdasarkan Total Reimburse terbesar ke terkecil (Descending)
-  summaryData.sort((a, b) => b.total - a.total);
-
-  // 3. Render Header
-  let headerHTML = `<tr><th>Nama Karyawan</th>${months.map(m => `<th>${m}</th>`).join('')}<th>Total</th></tr>`;
-  document.getElementById('summaryHeader').innerHTML = headerHTML;
-
-  // 4. Render Body
-  let bodyHTML = '';
-  summaryData.forEach(item => {
-    if (item.total > 0) {
-      const monthCols = item.monthly.map(sum => `<td>${sum ? 'Rp ' + sum.toLocaleString('id-ID') : '-'}</td>`).join('');
-      bodyHTML += `<tr><td class="fw-bold text-start">${item.nama}</td>${monthCols}<td class="fw-bold bg-light text-success">Rp ${item.total.toLocaleString('id-ID')}</td></tr>`;
-    }
-  });
-
-  if (!bodyHTML) {
-    bodyHTML = `<tr><td colspan="14" class="text-center text-muted py-3">Tidak ada data reimbursement pada tahun ${year}.</td></tr>`;
-  }
-
-  document.getElementById('summaryBody').innerHTML = bodyHTML;
-}
 
     function downloadSummaryPDF() {
       const year = document.getElementById('filterYearSummary').value;
@@ -1354,6 +1325,6 @@ function generateAndPreviewBatchPDF(memoNo, tglProses, items) {
 
       doc.save(`Summary_Reimbursement_${year}.pdf`);
     }
-</script>
+  </script>
 </body>
 </html>
